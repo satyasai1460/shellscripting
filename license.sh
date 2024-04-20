@@ -9,7 +9,7 @@ if [ $CurrentAge -lt 18 ]; then
 elif [ $CurrentAge -gt 18 -a $CurrentAge -lt 60 ]; then
     echo "You are Eligible for Driving License"
 elif [ $CurrentAge -gt 60 -a $CurrentAge -lt 100 ]; then
-    echo "You are Eligible for Driving License But Fitness and Eyesight Certificates arre required"
+    echo "You are Eligible for Driving License But Fitness and Eyesight Certificates are required"
 else
     echo "Invalid Age"
 fi
