@@ -38,6 +38,16 @@ for tool in $TOOLS; do
         echo "Let's install $tool"
         if [ $tool = 'unzip' -o $tool = 'jq' ]; then
             apt_tools
+        elif [ $tool = 'terraform' ]; then
+            tform
+        elif [ $tool = 'packer' ]; then
+            packerr
+        elif [ $tool = 'kops' ]; then
+            kopss
+        elif [ $tool = 'docker' ]; then
+            dockerr
+        else
+            echo "All Tools are Installed"
         fi
 
     fi
