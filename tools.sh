@@ -2,7 +2,7 @@
 TOOLS='unzip terraform packer docker kops jq'
 
 function apt_tools {
-    apt update
+    apt update >/dev/null 2>&1
     apt install -y unzip jq
 }
 
@@ -22,7 +22,7 @@ packerr() {
 
 kopss() {
     wget https://github.com/kubernetes/kops/releases/download/v1.28.4/kops-linux-amd64
-    mv kops-linux-amd64 /usr/local/bin/kops
+    mv kops-linux-amd64 /usr/local/bin/kops && chmod 777 /usr/local/bin/kops
     kops version
 }
 
