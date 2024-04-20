@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 read -p "Enter the Number:" NUM1
 
