@@ -10,7 +10,7 @@ USER1=$1
 if [ $# -gt 0 ]; then
     echo "Checking if the user Exists or Not"
     EXISTING_USER=$(cat /etc/passwd | grep -i ubuntu | cut -d ':' -f1)
-    if [ EXISTING_USER = $USER1 ]; then
+    if [ $EXISTING_USER = $USER1 ]; then
         echo "$USER1 already exists, Please try with different username."
     else
         echo "Username $USER1 is available...Lets create the user with username $USER1"
