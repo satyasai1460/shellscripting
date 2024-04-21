@@ -24,8 +24,13 @@ if [ $# -gt 0 ]; then
         #Forcing the user to change the password on Next Login
         passwd -e $USER1
         #Adding the user to sudoers file
-        sudo usermod -aG sudo $USER1
+        
         echo "Successfully created the user with the username $USER1 and password $PASSWORD"
+        read -p "Does this need SUDO acess??(Yes/No):" RESPONSE
+        if [ "${RESPONSE}" = 'yes' -o "${RESPONSE}" = 'YES' -o "${RESPONSE}" = 'y' -o "${RESPONSE}" = 'Y' ]
+        then
+        sudo usermod -aG sudo $USER1
+        echo "Successfully given Sudo access to $USER1"
     fi
 else
     echo "Please give atleast 1 Argument"
