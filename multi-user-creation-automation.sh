@@ -30,7 +30,7 @@ if [ $# -gt 0 ]; then
 
             fi
         else
-            echo "The Username must container ALPHABETS Only"
+            echo "The Username must container 3 ALPHABETS and 3 NUMBERS Only"
         fi
     done
 else
