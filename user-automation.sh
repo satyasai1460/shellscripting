@@ -26,7 +26,7 @@ if [ $# -gt 0 ]; then
         #Adding the user to sudoers file
         
         echo "Successfully created the user with the username $USER1 and password $PASSWORD"
-        read -p "Does this need SUDO acess??(Yes/No):" RESPONSE
+        read -p "Do you want this user to get SUDO acess??(Yes/No):" RESPONSE
         if [ "${RESPONSE}" = 'yes' -o "${RESPONSE}" = 'YES' -o "${RESPONSE}" = 'y' -o "${RESPONSE}" = 'Y' ]
         then
         sudo usermod -aG sudo $USER1
