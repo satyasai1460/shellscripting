@@ -1,37 +1,37 @@
 #!/bin/bash
-
-# Check if the user is already exists
-# If not, Create a user with home directory and bash shell
-# Generate a random password and assign it to the user
-# Force the user to reset the password
-# Adding the user to the sudoers file
-
-USER1=$1
-
+# 1. Check if the user already exists.
+# 2. If not, create the user with home dir and bash shell.
+# 3. Generate a random password and assign it to the user. Eg: India@23456!
+# 4. Force the user to reset the password.
+# 5. Provide User sudo access.
+USERNAME=$1
+USER=$(echo $USERNAME | tr '[:upper:]' '[:lower:]')
 if [ $# -gt 0 ]; then
-    echo "Checking if the user Exists or Not"
-    echo " "
-    EXISTING_USER=$(cat /etc/passwd | grep -i $USER1 | cut -d ':' -f1)
-    if [ "${EXISTING_USER}" = "${USER1}" ]; then
-        echo "$USER1 already exists, Please try with different username."
+    #if [[ $USER =~ ^[a-zA-Z]+$ ]]; then
+    if [[ "${USER}" =~ ^[a-zA-Z][a-zA-Z][a-zA-Z][0-9][0-9][0-9]$ ]]; then
+        echo "Check If The User Already Exists."
+        EXISTING_USER=$(cat /etc/passwd | grep -w $USER | cut -d ':' -f1)
+        if [ "${EXISTING_USER}" = "${USER}" ]; then
+            echo "$USER already exist in the machine. Try a diffrent username."
+        else
+            echo "Lets Create User $USER"
+            sudo useradd -m $USER --shell /bin/bash
+            #Generating Random Password
+            SPEC=$(echo '!@#$%^&*()_' | fold -1 | shuf | head -1)
+            PASSWORD="India@${RANDOM}${SPEC}"
+            echo "$USER:$PASSWORD" | sudo chpasswd
+            #Forcing user to reset the password on first login.
+            passwd -e $USER
+            echo "Successfully Create $USER with password $PASSWORD"
+            read -p "Does This User Needs To be SUDO(type yes/no):" RESPONSE
+            if [ "${RESPONSE}" = "yes" -o "${RESPONSE}" = "Yes" -o "${RESPONSE}" = "Y" -o "${RESPONSE}" = "y" ]; then
+                sudo usermod -aG sudo $USER
+            fi
+
+        fi
     else
-        echo "Username $USER1 is available...Lets create the user with username $USER1"
-        sudo useradd $USER1 -m --shell /bin/bash
-        #Generating a Random Password for the user
-        SPEC=$(echo '!@#$%^&*()_' | fold -1 | shuf | head -1)
-        PASSWORD="India@${RANDOM}${SPEC}"
-        echo "$USER1:$PASSWORD" | sudo chpasswd
-        #Forcing the user to change the password on Next Login
-        passwd -e $USER1
-        #Adding the user to sudoers file
-        
-        echo "Successfully created the user with the username $USER1 and password $PASSWORD"
-        read -p "Do you want this user to get SUDO acess??(Yes/No):" RESPONSE
-        if [ "${RESPONSE}" = 'yes' -o "${RESPONSE}" = 'YES' -o "${RESPONSE}" = 'y' -o "${RESPONSE}" = 'Y' ]
-        then
-        sudo usermod -aG sudo $USER1
-        echo "Successfully given Sudo access to $USER1"
+        echo "The Username must container ALPHABETS Only"
     fi
 else
-    echo "Please give atleast 1 Argument"
+    echo "It seems no Args are given. Please provide username."
 fi
