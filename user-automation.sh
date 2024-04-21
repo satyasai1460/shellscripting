@@ -4,6 +4,7 @@
 # If not, Create a user with home directory and bash shell
 # Generate a random password and assign it to the user
 # Force the user to reset the password
+# Adding the user to the sudoers file
 
 USER1=$1
 
@@ -18,7 +19,7 @@ if [ $# -gt 0 ]; then
         sudo useradd $USER1 -m --shell /bin/bash
         #Generating a Random Password for the user
         SPEC=$(echo '!@#$%^&*()_' | fold -1 | shuf | head -1)
-        PASSWORD="India@${RANDOM}${spec}"
+        PASSWORD="India@${RANDOM}${SPEC}"
         echo "$USER1:$PASSWORD" | sudo chpasswd
         #Forcing the user to change the password on Next Login
         passwd -e $USER1
