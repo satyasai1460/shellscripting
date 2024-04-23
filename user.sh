@@ -13,7 +13,7 @@ if [ $# -gt 0 ]; then
     echo -e "Checking if ${GREEN}$USER${RESET} is already Exists"
     EXISTING_USER=$(cat /etc/passwd | grep -i $USER | awk -F ':' '{print $1}')
     if [ "${USER}" = "${EXISTING_USER}" ]; then
-        echo "Sorry, Username ${GREEN}$USER${RESET} is already taken. Please pick a New Username"
+        echo -e "Sorry, Username ${GREEN}$USER${RESET} is already taken. Please pick a New Username"
     else
         echo -e "${GREEN}$USER${RESET} Username is available, Let's Create the user with ${USER}"
         #Adding the user with home directory and shell
