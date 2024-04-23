@@ -6,11 +6,9 @@
 # 5. Provide User sudo access.
 
 USER=$1
-EXISTING_USER=$(cat /etc/passwd | grep -i $USER | awk -F ':' '{print $1}')
-PASSWORD_GEN=$(echo $RANDOM '!@#$%^&*()_' | fold -1 | shuf | head -1)
-PASSWORD="India@${RANDOM}${PASSWORD_GEN}"
 if [ $# -gt 0 ]; then
     echo "Checking if $USER is already Exists"
+    EXISTING_USER=$(cat /etc/passwd | grep -i $USER | awk -F ':' '{print $1}')
     if [ "${USER}" = "${EXISTING_USER}" ]; then
         echo "Sorry, Username $USER is already taken. Please pick a New Username"
     else
@@ -18,6 +16,7 @@ if [ $# -gt 0 ]; then
         #Adding the user with home directory and shell
         sudo useradd -m $USER --shell /bin/bash
         #Generating the password for the user
+        PASSWORD_GEN=$(echo $RANDOM '!@#$%^&*()_' | fold -1 | shuf | head -1)
         PASSWORD="India@${RANDOM}${PASSWORD_GEN}"
         #Forcing the user to change the password
         echo "$USER:$PASSWORD" | sudo chpasswd
