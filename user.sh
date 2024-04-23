@@ -6,7 +6,7 @@
 # 5. Provide User sudo access.
 
 USER=$1
-EXISTING_USER=$(cat /etc/passwd | awk -F ':' '{print $1}' | grep -i satya)
+EXISTING_USER=$(cat /etc/passwd | awk -F ':' '{print $1}' | grep -i $USER)
 if [ $# -gt 0 ]; then
     echo "Checking if $USER is already Exists"
     if [ ${USER} = $EXISTING_USER ]; then
