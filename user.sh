@@ -17,7 +17,10 @@ if [ $# -gt 0 ]; then
     else
         echo -e "${GREEN}$USER${RESET} Username is available, Let's Create the user with ${USER}"
         #Adding the user with home directory and shell
-        sudo useradd -m $USER --shell /bin/bash
+        read -p "Do you want to create this user with username $USER (yes/no) :  " APPROVAL
+        if [ "${APPROVAL}" = 'yes' -o "${APPROVAL}" = 'YES' -o "${APPROVAL}" = 'y' -o "${APPROVAL}" = 'Y' ]; then
+            sudo useradd -m $USER --shell /bin/bash
+        fi
         #Generating the password for the user
         PASSWORD_GEN=$(echo '!@#$%^&*()_' | fold -1 | shuf | head -1)
         PASSWORD="India@${RANDOM}${PASSWORD_GEN}"
