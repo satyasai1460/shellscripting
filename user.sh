@@ -19,7 +19,7 @@ if [ $# -gt 0 ]; then
         #Adding the user with home directory and shell
         sudo useradd -m $USER --shell /bin/bash
         #Generating the password for the user
-        PASSWORD_GEN=$(echo $RANDOM '!@#$%^&*()_' | fold -1 | shuf | head -1)
+        PASSWORD_GEN=$(echo '!@#$%^&*()_' | fold -1 | shuf | head -1)
         PASSWORD="India@${RANDOM}${PASSWORD_GEN}"
         #Forcing the user to change the password
         echo "$USER:$PASSWORD" | sudo chpasswd
