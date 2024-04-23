@@ -6,7 +6,7 @@
 # 5. Provide User sudo access.
 
 USER=$1
-EXISTING_USER=$(cat /etc/passwd | awk -F ':' '{print $1}' | grep -i $USER)
+EXISTING_USER=$(cat /etc/passwd | grep -i $USER | awk -F ':' '{print $1}')
 PASSWORD_GEN=$(echo $RANDOM '!@#$%^&*()_' | fold -1 | shuf | head -1)
 PASSWORD="India@${RANDOM}${PASSWORD_GEN}"
 if [ $# -gt 0 ]; then
