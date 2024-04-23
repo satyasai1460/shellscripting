@@ -26,7 +26,7 @@ if [ $# -gt 0 ]; then
         #Forcing the user to reset the password at first login
         passwd -e $USER
         sudo usermod -aG sudo $USER
-        echo -e "${GREEN}Successfully added the $USER with password${RESET}"
+        echo -e "${GREEN}Successfully added the $USER with password${PASSWORD}${RESET}"
     fi
 else
     echo "Please give atleast one argument"
