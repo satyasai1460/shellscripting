@@ -9,7 +9,7 @@ USER=$1
 EXISTING_USER=$(cat /etc/passwd | awk -F ':' '{print $1}' | grep -i $USER)
 if [ $# -gt 0 ]; then
     echo "Checking if $USER is already Exists"
-    if [ ${USER} = $EXISTING_USER ]; then
+    if [ ${USER} = ${EXISTING_USER} ]; then
         echo "Sorry, Username $USER is already taken, Please pick a New Username"
     else
         echo "$USER Username is available, Let's Create the user with ${USER}"
