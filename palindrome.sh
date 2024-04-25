@@ -8,7 +8,7 @@ for ((i = $LENGTH; i >= o; i--)); do
 done
 
 if [ ${NEWWORD} = ${WORD} ]; then
-    echo "$NEWWORD is a Palindrome"
+    echo "$WORD is a Palindrome"
 else
-    echo "$NEWWORD is not a Palindrome"
+    echo "$WORD is not a Palindrome"
 fi
