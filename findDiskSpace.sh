@@ -1,5 +1,5 @@
 #!/bin/bash
-INPUT=$1
+read -p "Enter a word to check it was a Palindrome or Not : " INPUT
 WORD=$(echo ${INPUT} | tr '[:upper:]' '[:lower:]')
 LENGTH=$(expr ${#WORD} - 1)
 NEWWORD=''
