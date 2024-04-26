@@ -1,5 +1,6 @@
 #!/bin/bash
-WORD=$1
+INPUT=$1
+WORD=$(echo ${INPUT} | tr '[:upper:]' '[:lower:]')
 LENGTH=$(expr ${#WORD} - 1)
 NEWWORD=''
 
