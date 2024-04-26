@@ -12,7 +12,7 @@ else
     done
 fi
 
-if [ ${NEWWORD} = ${WORD} ]; then
+if [ ${WORD} = ${NEWWORD} ]; then
     echo "$WORD is PALINDROME"
 else
     echo "$WORD is not PALINDROME"
