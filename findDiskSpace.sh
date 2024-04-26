@@ -1,3 +1,4 @@
+#!/bin/bash
 WORD=$1
 LENGTH=$(expr ${#WORD} - 1)
 NEWWORD=''
