@@ -1,4 +1,4 @@
-WORD=$1
+WORD=~ ^[a-zA-Z]+$ | tr '[:upper:]' '[:lower:]'
 LENGTH=$(expr ${#WORD} - 1)
 NEWWORD=''
 
