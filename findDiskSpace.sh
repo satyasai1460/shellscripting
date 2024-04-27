@@ -13,12 +13,11 @@ USEDSPACEPERCENTAGE=$(df -h | grep -i root | awk -F ' ' '{print $5}' | sed "s/%/
 REMAININGSPACEPERCENTAGE=$(expr 100 - ${USEDSPACEPERCENTAGE})
 AVAILABLESPACE=$(df -h | grep -i root | awk -F ' ' '{print $4}' | sed "s/G//g")
 
-echo " "
-echo " "
 echo "The Total space for the ${FILESYSTEM} filesystem was ${TOTALSPACE}G"
 echo "The Space used by the filesystem  ${FILESYSTEM} was ${USEDSPACE}G i.e, (${USEDSPACEPERCENTAGE}%/100)"
 echo "The Remaining Available Space was ${AVAILABLESPACE}G"
-
+echo " "
+echo " "
 if [ ${USEDSPACEPERCENTAGE} -le 50 ]; then
     echo "You've Used ${USEDSPACEPERCENTAGE}% space and its in Healthy state - $(date)"
 fi
