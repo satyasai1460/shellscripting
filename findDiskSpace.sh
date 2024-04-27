@@ -25,5 +25,5 @@ if [ ${USEDSPACEPERCENTAGE} -le 70 ]; then
     echo "Warning....You've used ${USEDSPACEPERCENTAGE} of space - $(date)"
 fi
 if [ ${USEDSPACEPERCENTAGE} -ge 85 ]; then
-    echo "Warning....You've used ${USEDSPACEPERCENTAGE} of space. You Must clear some space otherwise Disk Performance will be Effected - $(date)"
+    echo "Warning....You've used ${USEDSPACEPERCENTAGE}% of space. You Must clear some space otherwise Disk Performance will be Effected - $(date)"
 fi
