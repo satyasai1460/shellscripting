@@ -21,7 +21,7 @@ echo " "
 if [ ${USEDSPACEPERCENTAGE} -le 50 ]; then
     echo "You've Used ${USEDSPACEPERCENTAGE}% space and its in Healthy state - $(date)"
 fi
-if [ ${USEDSPACEPERCENTAGE} -le 70 ]; then
+if [ ${USEDSPACEPERCENTAGE} -eq 70 ]; then
     echo "Warning....You've used ${USEDSPACEPERCENTAGE} of space - $(date)"
 fi
 if [ ${USEDSPACEPERCENTAGE} -ge 85 ]; then
